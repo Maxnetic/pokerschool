@@ -1,4 +1,5 @@
-# Mikka war hier, David auch, Lucia auch, Larissa sowieso
+# Moritz ist der einzig wahre!!!!!!!!!!!!!!!
+#Dein aller wahrste
 class Karte:
     def __init__(self,farbe,wert):
         self.farbe = farbe     # String
