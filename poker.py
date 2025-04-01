@@ -1,5 +1,5 @@
 # Moritz ist der einzig wahre!!!!!!!!!!!!!!!
-#Dein aller wahrste
+#Der aller wahrste
 class Karte:
     def __init__(self,farbe,wert):
         self.farbe = farbe     # String
