@@ -1,4 +1,6 @@
 # Dominic is King
+# Moritz ist der einzig wahre!!!!!!!!!!!!!!!
+# Der aller wahrste
 class Karte:
     def __init__(self,farbe,wert):
         self.farbe = farbe     # String
