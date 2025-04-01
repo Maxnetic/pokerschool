@@ -1,4 +1,4 @@
-# Mikka war hier
+# Mikka war hier, David auch 
 class Karte:
     def __init__(self,farbe,wert):
         self.farbe = farbe     # String
