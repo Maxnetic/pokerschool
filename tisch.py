@@ -1,9 +1,8 @@
 class Tisch:
 
-    def __init__(self):
-        self.startvermögen = input('Startvermögen:')
-        self.spieleranzahl = input('Spieleranzahl:')
-        self.sb = input('Betrag des Small Blinds (sb):')
+    def __init__(self, spieleranzahl, smallBlind):
+        self.spieleranzahl = spieleranzahl
+        self.smallBlind = smallBlind
 
     def Spielererstellung(self):
         pass
@@ -34,3 +33,8 @@ class Tisch:
                 name = w
                 name = Karte(f, w)
                 kartenDeck.append(name)
+        return kartenDeck
+           
+    def turn(self):
+        aufgedeckeKarten.append(kartenDeck[0])
+        return aufgedeckteKarten
