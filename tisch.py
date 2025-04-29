@@ -9,18 +9,28 @@ class Tisch:
         pass
 
     def Deck_erstellen(self):
-        kartenDeck = [] 
-        for i in range(2,15):  
-             
-            if(j == 11):
-                for j in range(13):    # alle werte der Farbe
-            if(j == 11):
-                wert = "Bube"
-            elif j == 12:
-                wert = "Dame"
-            elif j == 13:
-                wert = "König"
-            elif j == 14:
-                wert = "Ass"
-            else:
-                wert = j
+        kartenDeck = []
+        #erste Schleife teilt Farben zu, die zweite den Wert 
+        for f in range(4):
+            for w in range(2, 15):
+                if(f==1):
+                    f = "pik"
+                if(f==2):
+                    f = "herz"
+                if(f==3):
+                    f = "kreuz"
+                if(f==0):
+                    f = "karo"
+                if(w==11):
+                    w = "bube"
+                if(w==12):
+                    w = "dame"
+                if(w==13):
+                    w = "koenig"
+                if(w==14):
+                    w = "ass"
+                #dann werden die Kartenobjekte erstellt und in eine Liste sortiert
+                #name = w, damit die objekte in die Liste sortiert werden und nicht die Variable w
+                name = w
+                name = Karte(f, w)
+                kartenDeck.append(name)
