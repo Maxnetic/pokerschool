@@ -1,5 +1,5 @@
 class Spieler:
-    def __init__(self, vermoegen, name, aktiv = True, kartenhand = 0):
+    def __init__(self, vermoegen, name, aktiv = True, kartenhand = []):
         #der Spieler wird erstellt
         self.name = name
         self.kartenhand = kartenhand
@@ -28,12 +28,15 @@ class Spieler:
     def get_Hand(self): #Gibt die aktuelle Hand aus
         print('Hand: ' + self.kartenhand)
 
+    # setzt die Kartenhand der Spieler. Spieler darf nicht mehr als zwei Karten besitzten.
+    def set_Hand(self,karten):
+        if(len(karten) > 2):
+            print("Spieler darf nicht mehr als zwei Karten besitzen")
+
+
     def All_In(self, betrag):
         betrag = self.vermoegen
         self.vermoegen = 0
         return betrag
 
-    def kartenausteilen(self, karten):
-        #der Tisch greift auf dise Methode beim Kartenausteilen zu
-        self.kartenhand = karten
-        return self.kartenhand
+    
