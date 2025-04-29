@@ -1,9 +1,17 @@
 class Tisch:
 
+
+# Klasse Tisch Methode: Spielererstellung (soll die Spieler-, Rundenanzahl,
+#  das Startvermögen, den Small Blind und den Big Blind implementieren sowie reihum die Spieler ihren Namen eingeben lassen)
     def __init__(self):
-        self.startvermögen = input('Startvermögen:')
-        self.spieleranzahl = input('Spieleranzahl:')
-        self.sb = input('Betrag des Small Blinds (sb):')
+        self.aktuelle_wette = 0
+        self.ziehstapel = []
+        self.community_cards = []
+        self.rundenanzahl = 1
+        self.spieler = []
+        self.pot = 0
+        self.raise_count = 0
+        self.max_raises = 2
 
     def Spielererstellung(self):
         pass
