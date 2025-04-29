@@ -1,3 +1,5 @@
+import random
+
 class Tisch:
 
 
@@ -42,3 +44,12 @@ class Tisch:
                 name = w
                 name = Karte(f, w)
                 kartenDeck.append(name)
+ 
+
+    def Deck_mischen(self, kartenDeck):
+        neues_kartenDeck = []
+        for i in range(52):
+            pos = random.randint(0, len(kartenDeck) - 1)
+            neues_kartenDeck.append(kartenDeck[pos])
+            kartenDeck.pop(pos)
+        return neues_kartenDeck
