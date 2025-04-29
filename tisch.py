@@ -1,19 +1,21 @@
 class Tisch:
 
     def __init__(self):
-        self.startvermögen = input('Startvermögen:')
-        self.spieleranzahl = input('Spieleranzahl:')
         self.sb = input('Betrag des Small Blinds (sb):')
 
     def Spielererstellung(self):
-        pass
+        self.startvermögen = input('Startvermögen:')
+        self.spieleranzahl = input('Spieleranzahl:')
+        for i in range(self.spieleranzahl):
+            i.spieler = Spieler(vermoegen = self.startvermögen, name = input("name?"))
 
     def Deck_erstellen(self):
         kartenDeck = [] 
         for i in range(2,15):  
              
             if(j == 11):
-                for j in range(13):    # alle werte der Farbe
+                for j in range(13):
+                    pass()    # alle werte der Farbe
             if(j == 11):
                 wert = "Bube"
             elif j == 12:
