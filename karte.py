@@ -1,7 +1,7 @@
 class Karte:
     def __init__(self,farbe,wert):
         self.farbe = farbe     # String
-        self.wert = wert       # String (damit bube könig und dame erkennbar sind)
+        self.wert = wert       # String (damit Bube, König und Dame erkennbar sind)
     
 
     def getFarbe(self):
@@ -11,4 +11,5 @@ class Karte:
         return self.wert
 
     def printKarte(self):
-        print("Die Karte ist " + self.farbe + " " + self.wert)
+        return f"{self.wert}{self.farbe}"
+  
