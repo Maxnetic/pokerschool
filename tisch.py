@@ -17,8 +17,7 @@ class Tisch:
         for i in range(2,15):  
              
             if(j == 11):
-                for j in range(13):
-                    print()    # alle werte der Farbe
+                for j in range(13):    # alle werte der Farbe
             if(j == 11):
                 wert = "Bube"
             elif j == 12:
