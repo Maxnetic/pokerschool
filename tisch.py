@@ -1,21 +1,24 @@
+import spieler
+
 class Tisch:
 
     def __init__(self):
         self.sb = input('Betrag des Small Blinds (sb):')
+        self.spielerliste = []
+        self.startvermögen = int(input('Startvermögen:'))
+        spieleranzahl = int(input('Spieleranzahl:'))
+    
+    def spielererstellung(self):
+        for i in range(spieleranzahl):
+            self.spielerliste.append(spieler = spieler(vermoegen = int(input('Startvermögen: '), name = input('name. '))))
 
-    def Spielererstellung(self):
-        self.startvermögen = input('Startvermögen:')
-        self.spieleranzahl = input('Spieleranzahl:')
-        for i in range(self.spieleranzahl):
-            i.spieler = Spieler(vermoegen = self.startvermögen, name = input("name?"))
-
-    def Deck_erstellen(self):
+    def deck_erstellen(self):
         kartenDeck = [] 
         for i in range(2,15):  
              
             if(j == 11):
                 for j in range(13):
-                    pass()    # alle werte der Farbe
+                    print()    # alle werte der Farbe
             if(j == 11):
                 wert = "Bube"
             elif j == 12:
@@ -26,3 +29,8 @@ class Tisch:
                 wert = "Ass"
             else:
                 wert = j
+
+
+
+a = Tisch()
+a.spielererstellung()
