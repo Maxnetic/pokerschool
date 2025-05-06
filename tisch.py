@@ -26,32 +26,7 @@ class Tisch:
             for w in [2,3,4,5,6,7,8,9,10,11,12,13,14]:
                 deck.append(Karte(f,w))
         return(deck)
-        
-        for f in range(4):
-            for w in range(2, 15):
-                if(f==1):
-                    f = "pik"
-                if(f==2):
-                    f = "herz"
-                if(f==3):
-                    f = "kreuz"
-                if(f==0):
-                    f = "karo"
-                if(w==11):
-                    w = "bube"
-                if(w==12):
-                    w = "dame"
-                if(w==13):
-                    w = "koenig"
-                if(w==14):
-                    w = "ass"
-                #dann werden die Kartenobjekte erstellt und in eine Liste sortiert
-                #name = w, damit die objekte in die Liste sortiert werden und nicht die Variable w
-                name = w
-                name = Karte(f, w)
-                deck.append(name)
- 
-
+  
     def Deck_mischen(self, deck):
         neues_deck = []
         for i in range(52):
