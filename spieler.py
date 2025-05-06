@@ -23,6 +23,7 @@ class Spieler:
         #hier muss der Betrag dem Tisch zugeordnet werden
         #tisch.add_pot(betrag)
         #der Betrag wird dem vermögen abgezogen
+        #TODO: verschieben zu Validierung Raise()  self.max_raises = 2       # Maximale Anzahl von Raises pro Runde, standardmäßig nach Pokerregeln bei 2
         self.vermoegen = vermoegen - betrag
 
     def get_Hand(self): #Gibt die aktuelle Hand aus

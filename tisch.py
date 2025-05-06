@@ -35,7 +35,7 @@ class Tisch:
         return neues_deck
     
     def Flop_aufdecken(self):
-        self.gemeinschaftskarten = [self.neues_deck.pop() for _ in range(3)]    # Ziehe 3 Karten für den Flop
+        self.gemeinschaftskarten = [self.deck.pop() for _ in range(3)]          # Ziehe 3 Karten für den Flop
         print(f"Flop: {[str(karte) for karte in self.gemeinschaftskarten]}")    # Zeige die Flop-Karten
     
     def Turn_aufdecken(self):

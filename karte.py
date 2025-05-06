@@ -14,5 +14,6 @@ class Karte:
         #TODO zieht sich den String 11 -> Bube
         pass
 
-    def printKarte(self):
-        print("Die Karte ist " + self.farbe + " " + self.wert)
+    def __str__(self): # Methode für die Kartendarstellung als String
+        return f"{self.wert}{self.farbe}"
+    
