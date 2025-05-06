@@ -1,4 +1,6 @@
 from spieler import *
+import random
+import os
 
 class Tisch:
     def __init__(self):                                     # Konstruktor für die Tischdaten
@@ -28,47 +30,35 @@ class Tisch:
         return(deck)
   
     def Deck_mischen(self, deck):
-        neues_deck = [] # ein Deck wird in Form einer Liste zufällig gemischt
+        neues_deck = []
         for i in range(52):
             pos = random.randint(0, len(deck) - 1)
             neues_deck.append(deck[pos])
             deck.pop(pos)
         return neues_deck
-    
-    def Flop_aufdecken(self):
-        self.gemeinschaftskarten = [self.deck.pop() for _ in range(3)]          # Ziehe 3 Karten für den Flop
-        print(f"Flop: {[str(karte) for karte in self.gemeinschaftskarten]}")    # Zeige die Flop-Karten
-    
-    def Turn_aufdecken(self):
-        self.gemeinschaftskarten.append(self.deck.pop())                        # Ziehe eine Karte für den Turn
-        print(f"Turn: {[str(karte) for karte in self.gemeinschaftskarten]}")    # Zeige die Turn-Karte
 
-    def River_aufdecken(self):
-        self.gemeinschaftskarten.append(self.deck.pop())                        # Ziehe eine Karte für den River
-        print(f"River: {[str(karte) for karte in self.gemeinschaftskarten]}")   # Zeige die River-Karte
-
-    def konsole(self, community_cards, vermoegen, kartenhand):      #spieler ui während einer runde
-        print("aufgedeckte Karten: " + community_cards)             #ausgeben der zum zeitpunkt wichtigen daten
+    def konsole(self, community_cards, vermoegen, kartenhand):                  #spieler ui während einer runde
+        print("aufgedeckte Karten: " + community_cards)                         #ausgeben der zum zeitpunkt wichtigen daten
         print("Hand: " + kartenhand)
         print("Vermögen: " + vermoegen)
 
         raise_call = ""
-        while raise_call is not in ["raise", "call"]:               #input error handling
+        while raise_call is not in ["raise", "call"]:                           #input error handling
 
             if (raise_call == "raise"):                             
                 
                 raise_amount = ""
-                while raise_menge < 1 < spieler.vermoegen:          #input error handling
+                while raise_menge < 1 < spieler.vermoegen:                      #input error handling
                     raise_amount = input("wie viel?: ")
-                    spieler.vermoegen = spieler.vermoegen - y       #vermoegen aktualisieren
-                    self.pot = self.pot + raise_amount              #pot aktualisieren
+                    spieler.vermoegen = spieler.vermoegen - raise_amount        #vermoegen aktualisieren
+                    self.pot = self.pot + raise_amount                          #pot aktualisieren
 
             elif (x == "call"):
-                spieler.aktiv = False                               #spieler scheiden aus bei call
+                spieler.aktiv = False                                           #spieler scheiden aus bei call
 
         os.system('cls' if os.name == 'nt' else 'clear')
         
-    def zeige_spielstaende(self):                                   #ausgeben von name und vermoegen aller spieler
+    def zeige_spielstaende(self):                                               #ausgeben von name und vermoegen aller spieler
         for i in spieler:
             print(i.name + " " + i.vermoegen)                       
 
