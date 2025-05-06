@@ -6,7 +6,7 @@ class Tisch:
         self.deck = []                                      # Der Kartenvorrat (Deck), anfangs eine leere Liste
         self.gemeinschaftskarten = []                       # Gemeinschaftskarten (Flop, Turn, River), anfangs eine leere Liste
         self.rundenanzahl = 1                               # Anzahl der Runden, die gespielt werden sollen, wird anfangs auf 1 gesetzt, da in einem Spiel mindestens eine Runde gespielt wird, kann aber später noch angepasst werden bei der Tischerstellung
-        self.spieler = []                                   # Liste der Spieler, anfangs leer
+        self.spielerListe = []                                   # Liste der Spieler, anfangs leer
         self.pot = 0                                        # Pot (Gesamtbetrag der Einsätze), anfangs bei null
         self.raise_count = 0                                # Zähler für die Anzahl der Erhöhungen in der Runde, anfangs bei null
         #TODO: verschieben zu Validierung Raise() self.max_raises = 2                                 # Maximale Anzahl von Raises pro Runde, standardmäßig nach Pokerregeln bei 2
@@ -17,7 +17,7 @@ class Tisch:
     def spielererstellung(self):                                #erstellt eine bestimmte Anzahl an Spielern mit Namen und Startvermoegen
         for i in range(int(input('Spieleranzahl:'))):
             teilnehmer = Spieler(name = input('Name: '), vermoegen = int(input('Startvermögen: ')))
-            self.spieler.append(teilnehmer)
+            self.spielerListe.append(teilnehmer)
 
     def Deck_erstellen(self):
         deck = []
@@ -36,7 +36,7 @@ class Tisch:
         return neues_deck
 
 
-def kartenausteilen(spielerListe):
+def kartenausteilen(self, spielerListe):
         spielDeck = Deck_mischen(deck)
 
         # Für jeden Spieler
