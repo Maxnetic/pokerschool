@@ -1,42 +1,42 @@
 class Spieler:
-    def __init__(self, vermoegen, name, aktiv = True, kartenhand = 0):
+    def __init__(self, vermoegen, name, aktiv = True, karten_hand = 0):
         #der Spieler wird erstellt
         self.name = name
-        self.kartenhand = kartenhand # Liste mit zwei Karten
+        self.karten_hand = karten_hand # Liste mit zwei Karten
         self.aktiv = aktiv
         self.vermoegen = vermoegen
 
-    def Call(self, betrag):
+    def call(self, betrag):
         #hier muss der betrag dem Tisch zuaddiert werden
         #tisch.add_pot(betrag)
         #das Vermögen wird gesengt
         self.vermoegen = self.vermoegen - betrag
         return self.vermoegen
 
-    def Fold(self):
+    def fold(self):
         #hier muss der Spieler aus der Liste der Beteiligten gelöscht werden
         #Der Status wird auf raus gesetzt
         self.aktiv = False
         return self.aktiv
 
-    def Raise(self, betrag):
+    def lift(self, betrag):
         #hier muss der Betrag dem Tisch zugeordnet werden
         #tisch.add_pot(betrag)
         #der Betrag wird dem vermögen abgezogen
         self.vermoegen = vermoegen - betrag
 
-    def get_Hand(self): #Gibt die aktuelle Hand aus
-        print('Hand: ' + self.kartenhand)
+    def get_hand(self): #Gibt die aktuelle Hand aus
+        print('Hand: ' + self.karten_hand)
 
     # Kartenhand als Liste. Default leere Liste
-    def set_Hand(karten = []):
+    def set_hand(karten = []):
         #validieren,sodass es sich um wirklich zwei Karten handelt.
         if(len(karten) != 2):
             print("Fehler")
-        self.kartenhand = karten
+        self.karten_hand = karten
 
 
-    def All_In(self, betrag):
+    def all_in(self, betrag):
         betrag = self.vermoegen
         self.vermoegen = 0
         return betrag

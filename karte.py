@@ -4,15 +4,15 @@ class Karte:
         self.wert = wert       # String (damit bube könig und dame erkennbar sind)
     
 
-    def getFarbe(self):
+    def get_farbe(self):
         return self.farbe
     
-    def getWert(self):
+    def get_wert(self):
         return self.wert
     
-    def printWert(self):
+    def print_wert(self):
         #TODO zieht sich den String 11 -> Bube
         pass
 
-    def printKarte(self):
+    def print_karte(self):
         print("Die Karte ist " + self.farbe + " " + self.wert)
