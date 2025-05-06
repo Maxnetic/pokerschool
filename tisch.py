@@ -35,11 +35,28 @@ class Tisch:
             deck.pop(pos)
         return neues_deck
 
+    def konsole(self, community_cards, vermoegen, kartenhand):      #spieler ui während einer runde
+        print("aufgedeckte Karten: " + community_cards)             #ausgeben der zum zeitpunkt wichtigen daten
+        print("Hand: " + kartenhand)
+        print("Vermögen: " + vermoegen)
 
-def kartenausteilen(self, spielerListe):
-        spielDeck = Deck_mischen(deck)
+        raise_call = ""
+        while raise_call is not in ["raise", "call"]:               #input error handling
 
-        # Für jeden Spieler
-        for spieler in spielerListe:
-            # add zwei Karten
-            spieler.setHand(spielDeck.pop,spielDeck.pop)
+            if (raise_call == "raise"):                             
+                
+                raise_amount = ""
+                while raise_menge < 1 < spieler.vermoegen:          #input error handling
+                    raise_amount = input("wie viel?: ")
+                    spieler.vermoegen = spieler.vermoegen - y       #vermoegen aktualisieren
+                    self.pot = self.pot + raise_amount              #pot aktualisieren
+
+            elif (x == "call"):
+                spieler.aktiv = False                               #spieler scheiden aus bei call
+
+        os.system('cls' if os.name == 'nt' else 'clear')
+        
+    def zeige_spielstaende(self):                                   #ausgeben von name und vermoegen aller spieler
+        for i in spieler:
+            print(i.name + " " + i.vermoegen)                       
+
