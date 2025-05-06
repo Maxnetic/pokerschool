@@ -59,3 +59,12 @@ class Tisch:
             neues_deck.append(deck[pos])
             deck.pop(pos)
         return neues_deck
+
+
+def kartenausteilen(spielerListe):
+        spielDeck = Deck_mischen(deck)
+
+        # Für jeden Spieler
+        for spieler in spielerListe:
+            # add zwei Karten
+            spieler.setHand(spielDeck.pop,spielDeck.pop)
