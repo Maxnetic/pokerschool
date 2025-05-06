@@ -34,3 +34,29 @@ class Tisch:
             neues_deck.append(deck[pos])
             deck.pop(pos)
         return neues_deck
+
+    def konsole(self, community_cards, vermoegen, kartenhand):
+        print("aufgedeckte Karten: " + community_cards)
+        print("Hand: " + kartenhand)
+        print("Vermögen: " + vermoegen)
+
+        raise_call = ""
+        while raise_call is not in ["raise", "call"]:
+
+            if (raise_call == "raise"):
+                
+                raise_amount = ""
+                while raise_menge < 1 < spieler.vermoegen:
+                    raise_amount = input("wie viel?: ")
+                    spieler.vermoegen = spieler.vermoegen - y
+                    self.pot = self.pot + raise_amount
+
+            elif (x == "call"):
+
+                spieler.aktiv = False
+
+        os.system('cls' if os.name == 'nt' else 'clear')
+        
+    def zeige_spielstaende(self):
+        for i in spieler:
+            print(i.name + " " + i.vermoegen)
