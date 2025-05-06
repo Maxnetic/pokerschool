@@ -37,6 +37,18 @@ class Tisch:
             deck.pop(pos)
         return neues_deck
 
+    def Flop_aufdecken(self):
+        self.gemeinschaftskarten = [self.deck.pop() for _ in range(3)]          # Ziehe 3 Karten für den Flop
+        print(f"Flop: {[str(karte) for karte in self.gemeinschaftskarten]}")    # Zeige die Flop-Karten
+    
+    def Turn_aufdecken(self):
+        self.gemeinschaftskarten.append(self.deck.pop())                        # Ziehe eine Karte für den Turn
+        print(f"Turn: {[str(karte) for karte in self.gemeinschaftskarten]}")    # Zeige die Turn-Karte
+
+    def River_aufdecken(self):
+        self.gemeinschaftskarten.append(self.deck.pop())                        # Ziehe eine Karte für den River
+        print(f"River: {[str(karte) for karte in self.gemeinschaftskarten]}")   # Zeige die River-Karte
+
     def konsole(self, community_cards, vermoegen, kartenhand):                  #spieler ui während einer runde
         print("aufgedeckte Karten: " + community_cards)                         #ausgeben der zum zeitpunkt wichtigen daten
         print("Hand: " + kartenhand)
