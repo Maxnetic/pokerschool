@@ -2,7 +2,7 @@ class Spieler:
     def __init__(self, vermoegen, name, aktiv = True, kartenhand = 0):
         #der Spieler wird erstellt
         self.name = name
-        self.kartenhand = kartenhand
+        self.kartenhand = kartenhand # Liste mit zwei Karten
         self.aktiv = aktiv
         self.vermoegen = vermoegen
 
@@ -28,12 +28,19 @@ class Spieler:
     def get_Hand(self): #Gibt die aktuelle Hand aus
         print('Hand: ' + self.kartenhand)
 
+    # Kartenhand als Liste. Default leere Liste
+    def set_Hand(karten = []):
+        #validieren,sodass es sich um wirklich zwei Karten handelt.
+        if(len(karten) != 2):
+            print("Fehler")
+        self.kartenhand = karten
+
+
     def All_In(self, betrag):
         betrag = self.vermoegen
         self.vermoegen = 0
         return betrag
 
-    def kartenausteilen(self, karten):
-        #der Tisch greift auf dise Methode beim Kartenausteilen zu
-        self.kartenhand = karten
-        return self.kartenhand
+    
+
+   
