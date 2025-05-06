@@ -18,7 +18,7 @@ class Tisch:
             spieler_objekt = Spieler(name = input('Name: '), vermoegen = int(input('Startvermögen: ')))
             self.spieler_liste.append(teilnehmer)
 
-    def Deck_erstellen(self):
+    def deck_erstellen(self):
         deck = []
         #erste Schleife teilt Farben zu, die zweite den Wert 
         for f in ["pik","herz","karo","kreuz"]:
@@ -26,7 +26,7 @@ class Tisch:
                 deck.append(Karte(f,w))
         return(deck)
   
-    def Deck_mischen(self, deck):
+    def deck_mischen(self, deck):
         neues_deck = []
         for i in range(52):
             pos = random.randint(0, len(deck) - 1)
