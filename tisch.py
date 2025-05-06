@@ -10,7 +10,6 @@ class Tisch:
         self.pot = 0                                        # Pot (Gesamtbetrag der Einsätze), anfangs bei null
         self.raise_count = 0                                # Zähler für die Anzahl der Erhöhungen in der Runde, anfangs bei null
         #TODO: verschieben zu Validierung Raise() self.max_raises = 2                                 # Maximale Anzahl von Raises pro Runde, standardmäßig nach Pokerregeln bei 2
-        #TODO: verschieben zu Spielerstellung self.spieleranzahl = int(input("Spieleranzahl: "))  # Eingabe der Anzahl der Spieler
         self.rundenanzahl = int(input("Rundenanzahl: "))    # Eingabe der Anzahl der Runden
         self.small_blind = int(input("Small Blind: "))      # Small Blind (Mindestwette)
         self.big_blind = 2 * self.small_blind               # Big Blind (doppelt so hoch wie Small Blind)
