@@ -44,17 +44,19 @@ class Tisch:
 
         raise_call = ""
         while raise_call is not in ["raise", "call"]:                           #input error handling
+            raise_call = input()
 
-            if (raise_call == "raise"):                             
-                
-                raise_amount = ""
-                while raise_menge < 1 < spieler.vermoegen:                      #input error handling
-                    raise_amount = input("wie viel?: ")
-                    spieler.vermoegen = spieler.vermoegen - raise_amount        #vermoegen aktualisieren
-                    self.pot = self.pot + raise_amount                          #pot aktualisieren
+        if (raise_call == "raise"):                             
+              
+            raise_menge = 0
+            while 0 < raise_menge < spieler.vermoegen:                      #input error handling
+                raise_amount = input("wie viel?: ")
+                    
+            spieler.vermoegen = spieler.vermoegen - raise_menge         #vermoegen aktualisieren
+            self.pot = self.pot + raise_menge                           #pot aktualisieren
 
-            elif (x == "call"):
-                spieler.aktiv = False                                           #spieler scheiden aus bei call
+        elif (raise_call == "call"):
+            spieler.aktiv = False                                           #spieler scheiden aus bei call
 
         os.system('cls' if os.name == 'nt' else 'clear')
         
