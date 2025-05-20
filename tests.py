@@ -3,7 +3,7 @@ from tisch import *
 
 class TestTisch(unittest.TestCase):
 
-    def test_gemischt(self):    #Larissa
+    def testGemischt(self):    #Larissa
         a = 0 #zählt wieviele karten zufällig an der  richtigen stelle stehen
         b = 0 #zählt, die kartenfarbe abhängig von der stelle, an der man sich im deck befindet
         for i in range(57):
@@ -15,46 +15,46 @@ class TestTisch(unittest.TestCase):
                 b = "karo"
             if i > 42:
                 b = "kreuz"
-            if neues_deck[i] == Karte(b, i):
+            if neuesDeck[i] == Karte(b, i):
                 a = a + 1
                 if a == 5:
                     raise ValueError("das Deck ist nicht gemischt")
     
-    def test_deckerstellt(self): # David
+    def testDeckerstellt(self): # David
         pass
 
-    def test_gemeinschaftskarten(self): # Dominic
+    def testGemeinschaftskarten(self): # Dominic
         pass
 
-    def test_spieler_erstellt(self):    # Mikka
+    def testSpielerErstellt(self):    # Mikka
         a = Tisch()
         a.spielererstellung()
         self.assertEqual(len(a.spielerListe), int(input('vorher eingegebene Spieleranzahl:')))
 
-    def test_kartenausgeteilt(self): # Lucia
+    def testKartenausgeteilt(self): # Lucia
         for i in range len(spielerListe): #Es wird getestet, ob ein Spieler in der Liste eine leere Liste hat.
             if (Spieler.kartenhand = 0):
                 raise ValueError('Ein Spieler hat keine Karten')
 
-    def test_tischerstellt(self): # Moritz
+    def testTischerstellt(self): # Moritz
         pass
 
 if __name__ == '__main__':
     unittest.main()
 
-    def test_KartenattributeStimmen(self):
+    def testKartenattributeStimmen(self):
         pass
 
-    def test_KartenWerdenAufgedeckt(self):
+    def testKartenWerdenAufgedeckt(self):
         pass
 
-    def test_WettrundeFunktioniert(self):
+    def testWettrundeFunktioniert(self):
         pass
 
-    def test_HandbewertungStimmt(self):
+    def testHandbewertungStimmt(self):
         pass
 
-    def test_SpielendeWirdGeprueft(self):
+    def testSpielendeWirdGeprueft(self):
         pass
 
     

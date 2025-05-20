@@ -35,18 +35,18 @@ class Spieler:
             print(self.betrag)
             return betrag
 
-    def get_Hand(self): #Gibt die aktuelle Hand aus
+    def getHand(self): #Gibt die aktuelle Hand aus
         print('Hand: ' + self.kartenhand)
 
     # Kartenhand als Liste. Default leere Liste
-    def set_Hand(karten = []):
+    def setHand(karten = []):
         #validieren,sodass es sich um wirklich zwei Karten handelt.
         if(len(karten) != 2):
             print("Fehler")
         self.kartenhand = karten
 
 
-    def All_In(self, betrag):
+    def AllIn(self, betrag):
         betrag = self.vermoegen
         self.vermoegen = 0
         return betrag
