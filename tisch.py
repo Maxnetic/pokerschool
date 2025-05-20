@@ -4,6 +4,7 @@ class Tisch:
         self.startvermögen = input('Startvermögen:')
         self.spieleranzahl = input('Spieleranzahl:')
         self.sb = input('Betrag des Small Blinds (sb):')
+        self.bb = 2* self.sb
 
     def Spielererstellung(self):
         pass
@@ -24,3 +25,10 @@ class Tisch:
                 wert = "Ass"
             else:
                 wert = j
+    def Flop():
+        aufgedeckteKarten = []
+        for k in range (3):         #Soll drei Kartenwerte und -Farben ausgeben und in eine Liste einsortieren
+            karte1 = kartendeck.pop(0)
+            aufgedeckteKarten.append(karte1)    
+        print(aufgedeckteKarten)
+Flop()
