@@ -39,9 +39,6 @@ class TestTisch(unittest.TestCase):
     def testTischerstellt(self): # Moritz
         pass
 
-if __name__ == '__main__':
-    unittest.main()
-
     def testKartenattributeStimmen(self):
         pass
 
@@ -62,5 +59,10 @@ if __name__ == '__main__':
 
     def testCallRaiseUndFoldFunktionieren(self):
         pass
+
+
+if __name__ == '__main__':
+    unittest.main()
+
 
     
