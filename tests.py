@@ -1,4 +1,5 @@
 import unittest
+from tisch import *
 
 class TestTisch(unittest.TestCase):
 
@@ -12,7 +13,9 @@ class TestTisch(unittest.TestCase):
         pass
 
     def test_spieler_erstellt(self):    # Mikka
-        pass
+        a = Tisch()
+        a.spielererstellung()
+        self.assertEqual(len(a.spielerListe), int(input('vorher eingegebene Spieleranzahl:')))
 
     def test_kartenausgeteilt(self): # Lucia
         pass
@@ -20,19 +23,6 @@ class TestTisch(unittest.TestCase):
     def test_tischerstellt(self): # Moritz
         pass
 
-    def test_upper(self):
-        self.assertEqual('foo'.upper(), 'FOO')
-
-    def test_isupper(self):
-        self.assertTrue('FOO'.isupper())
-        self.assertFalse('Foo'.isupper())
-
-    def test_split(self):
-        s = 'hello world'
-        self.assertEqual(s.split(), ['hello', 'world'])
-        # check that s.split fails when the separator is not a string
-        with self.assertRaises(TypeError):
-            s.split(2)
-
 if __name__ == '__main__':
     unittest.main()
+
