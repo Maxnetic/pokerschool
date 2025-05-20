@@ -57,4 +57,10 @@ if __name__ == '__main__':
     def testSpielendeWirdGeprueft(self):
         pass
 
+    def testSpielerattributeStimmen(self):
+        pass
+
+    def testCallRaiseUndFoldFunktionieren(self):
+        pass
+
     
