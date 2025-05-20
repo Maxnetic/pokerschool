@@ -1,40 +1,66 @@
 import unittest
-import tisch
+from tisch import *
 
 class TestTisch(unittest.TestCase):
 
-    def test_gemischt(self):    #Larissa
-        pass
+    def testGemischt(self):    #Larissa
+        a = 0 #zählt wieviele karten zufällig an der  richtigen stelle stehen
+        b = 0 #zählt, die kartenfarbe abhängig von der stelle, an der man sich im deck befindet
+        for i in range(57):
+            if i <= 14:
+                b = "pik"
+            if i <= 28 and i > 14:
+                b = "herz"
+            if i <= 42 and i > 28:
+                b = "karo"
+            if i > 42:
+                b = "kreuz"
+            if neuesDeck[i] == Karte(b, i):
+                a = a + 1
+                if a == 5:
+                    raise ValueError("das Deck ist nicht gemischt")
     
-    def test_deckerstellt(self): # David
+    def testDeckerstellt(self): # David
         pass
 
-    def test_gemeinschaftskarten(self): # Dominic
+    def testGemeinschaftskarten(self): # Dominic
         pass
 
-    def test_spieler_erstellt(self):    # Mikka
+    def testSpielerErstellt(self):    # Mikka
+        a = Tisch()
+        a.spielererstellung()
+        self.assertEqual(len(a.spielerListe), int(input('vorher eingegebene Spieleranzahl:')))
+
+    def testKartenausgeteilt(self): # Lucia
+        for i in range len(spielerListe): #Es wird getestet, ob ein Spieler in der Liste eine leere Liste hat.
+            if (Spieler.kartenhand = 0):
+                raise ValueError('Ein Spieler hat keine Karten')
+
+    def testTischerstellt(self): # Moritz
         pass
-
-    def test_kartenausgeteilt(self): # Lucia
-        pass
-
-    def test_tischerstellt(self): # Moritz
-        tisch = tisch.Tisch()
-        self.assertTrue(type(tisch)==Tisch)
-
-    def test_upper(self):
-        self.assertEqual('foo'.upper(), 'FOO')
-
-    def test_isupper(self):
-        self.assertTrue('FOO'.isupper())
-        self.assertFalse('Foo'.isupper())
-
-    def test_split(self):
-        s = 'hello world'
-        self.assertEqual(s.split(), ['hello', 'world'])
-        # check that s.split fails when the separator is not a string
-        with self.assertRaises(TypeError):
-            s.split(2)
 
 if __name__ == '__main__':
     unittest.main()
+
+    def testKartenattributeStimmen(self):
+        pass
+
+    def testKartenWerdenAufgedeckt(self):
+        pass
+
+    def testWettrundeFunktioniert(self):
+        pass
+
+    def testHandbewertungStimmt(self):
+        pass
+
+    def testSpielendeWirdGeprueft(self):
+        pass
+
+    def testSpielerattributeStimmen(self):
+        pass
+
+    def testCallRaiseUndFoldFunktionieren(self):
+        pass
+
+    
