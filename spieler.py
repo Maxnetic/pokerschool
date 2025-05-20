@@ -10,8 +10,11 @@ class Spieler:
         #hier muss der betrag dem Tisch zuaddiert werden
         #tisch.add_pot(betrag)
         #das Vermögen wird gesengt
-        self.vermoegen = self.vermoegen - betrag
-        return self.vermoegen
+        if(self.vermoegen < betrag):
+            raise ValueError ('Der geforderte Einsatz ist groeßer als dein Vermögen.')
+        else:
+            self.vermoegen = self.vermoegen - betrag
+            return self.vermoegen    
 
     def Fold(self):
         #hier muss der Spieler aus der Liste der Beteiligten gelöscht werden
@@ -24,7 +27,13 @@ class Spieler:
         #tisch.add_pot(betrag)
         #der Betrag wird dem vermögen abgezogen
         #TODO: verschieben zu Validierung Raise()  self.max_raises = 2       # Maximale Anzahl von Raises pro Runde, standardmäßig nach Pokerregeln bei 2
-        self.vermoegen = vermoegen - betrag
+        if (self.vermoegen < betrag ):
+            raise ValueError ('Der geforderte Einsatz ist groeßer als dein Vermögen.')
+        else:
+            self.vermoegen = vermoegen - betrag
+            print('Der Einsatz wurde erhöht und beträgt nun:')
+            print(self.betrag)
+            return betrag
 
     def get_Hand(self): #Gibt die aktuelle Hand aus
         print('Hand: ' + self.kartenhand)
