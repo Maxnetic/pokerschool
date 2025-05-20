@@ -42,3 +42,19 @@ class TestTisch(unittest.TestCase):
 if __name__ == '__main__':
     unittest.main()
 
+    def test_KartenattributeStimmen(self):
+        pass
+
+    def test_KartenWerdenAufgedeckt(self):
+        pass
+
+    def test_WettrundeFunktioniert(self):
+        pass
+
+    def test_HandbewertungStimmt(self):
+        pass
+
+    def test_SpielendeWirdGeprueft(self):
+        pass
+
+    
