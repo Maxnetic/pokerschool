@@ -1,4 +1,6 @@
 import unittest
+import tisch
+import karte
 
 class TestTisch(unittest.TestCase):
 
@@ -9,7 +11,11 @@ class TestTisch(unittest.TestCase):
         pass
 
     def test_gemeinschaftskarten(self): # Dominic
-        pass
+        test_gk = tisch.Tisch()
+        self.assertEqual(test_gk.Flop_aufdecken())
+        self.assertEqual(test_gk.Turn_aufdecken())
+        self.assertEqual(test_gk.River_aufdecken())
+
 
     def test_spieler_erstellt(self):    # Mikka
         pass

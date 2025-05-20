@@ -1,6 +1,7 @@
 from spieler import *
 import random
 import os
+from karte import *
 
 class Tisch:
     def __init__(self):                                     # Konstruktor für die Tischdaten
@@ -38,7 +39,9 @@ class Tisch:
         return neues_deck
 
     def Flop_aufdecken(self):
-        self.gemeinschaftskarten = [self.deck.pop() for _ in range(3)]          # Ziehe 3 Karten für den Flop
+        self.gemeinschaftskarten.append(self.deck.pop())
+        self.gemeinschaftskarten.append(self.deck.pop())   
+        self.gemeinschaftskarten.append(self.deck.pop())                         # Ziehe 3 Karten für den Flop
         print(f"Flop: {[str(karte) for karte in self.gemeinschaftskarten]}")    # Zeige die Flop-Karten
     
     def Turn_aufdecken(self):
@@ -53,26 +56,3 @@ class Tisch:
         print("aufgedeckte Karten: " + community_cards)                         #ausgeben der zum zeitpunkt wichtigen daten
         print("Hand: " + kartenhand)
         print("Vermögen: " + vermoegen)
-
-        raise_call = ""
-        while raise_call is not in ["raise", "call"]:                           #input error handling
-            raise_call = input()
-
-        if (raise_call == "raise"):                             
-              
-            raise_menge = 0
-            while 0 < raise_menge < spieler.vermoegen:                      #input error handling
-                raise_amount = input("wie viel?: ")
-                    
-            spieler.vermoegen = spieler.vermoegen - raise_menge         #vermoegen aktualisieren
-            self.pot = self.pot + raise_menge                           #pot aktualisieren
-
-        elif (raise_call == "call"):
-            spieler.aktiv = False                                           #spieler scheiden aus bei call
-
-        os.system('cls' if os.name == 'nt' else 'clear')
-        
-    def zeige_spielstaende(self):                                               #ausgeben von name und vermoegen aller spieler
-        for i in spieler:
-            print(i.name + " " + i.vermoegen)                       
-
