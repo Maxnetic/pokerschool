@@ -1,4 +1,5 @@
 import unittest
+import tisch
 
 class TestTisch(unittest.TestCase):
 
@@ -18,7 +19,8 @@ class TestTisch(unittest.TestCase):
         pass
 
     def test_tischerstellt(self): # Moritz
-        pass
+        tisch = tisch.Tisch()
+        self.assertTrue(type(tisch)==Tisch)
 
     def test_upper(self):
         self.assertEqual('foo'.upper(), 'FOO')
