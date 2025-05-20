@@ -15,7 +15,9 @@ class TestTisch(unittest.TestCase):
         pass
 
     def test_kartenausgeteilt(self): # Lucia
-        pass
+        for i in range len(spielerListe): #Es wird getestet, ob ein Spieler in der Liste eine leere Liste hat.
+            if (Spieler.kartenhand = 0):
+                raise ValueError('Ein Spieler hat keine Karten')
 
     def test_tischerstellt(self): # Moritz
         pass
