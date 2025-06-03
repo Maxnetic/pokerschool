@@ -56,6 +56,7 @@ class Tisch:
 
         raise_call_fold = ""
         betrag = ""                           #input error handling
+                                              #was ist raise call fold?
 
         if raise_call_fold == "Raise":
             betrag = input()                             

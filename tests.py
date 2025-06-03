@@ -39,11 +39,27 @@ class TestTisch(unittest.TestCase):
     def testTischerstellt(self): # Moritz
         pass
 
-    def testKartenattributeStimmen(self):
-        pass
+    def testKartenattributeStimmen(self):       
+    for i in range (len(deck)):         #testet für jede Karte im Stapel
+        if (deck[i].farbe == '') or (deck[i].farbe != 'pik' and deck[i].farbe != 'karo' and deck[i].farbe != 'kreuz' and deck[i].farbe != 'herz'):
+            i = str(i)
+            raise ValueError("Die Kartenfarbe stimmt nicht an der Stelle: " + i)
+        intWert = int(deck[i].wert)  #zum Testen ob der wert im bereich 2 - 14 liegt
+        if (deck[i].wert == '') or (intWert < 2 or intWert > 14):
+            i = str(i)
+            raise ValueError("Der Kartenwert stimmt nicht an der Stelle: " + i)
 
-    def testKartenWerdenAufgedeckt(self):
-        pass
+
+    def testKartenWerdenAufgedeckt(self, wofuer):  
+    if wofuer = "flop":
+        if (len(gemeinschaftskarten) != 3):
+            raise ValueError("Es werden zu viele oder zu wenige Karten für den Flop aufgedeckt")
+    if wofuer = "turn":
+        if (len(gemeinschaftskarten) != 4):
+            raise ValueError("Es werden zu viele oder zu wenige Karten für den Turn aufgedeckt")
+    if wofuer = "river":
+        if (len(gemeinschaftskarten) != 5):
+            raise ValueError("Es werden zu viele oder zu wenige Karten für den River aufgedeckt")
 
     def testWettrundeFunktioniert(self):
         pass
