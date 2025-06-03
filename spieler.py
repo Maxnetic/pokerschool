@@ -6,7 +6,7 @@ class Spieler:
         self.aktiv = aktiv
         self.vermoegen = vermoegen
 
-    def Call(self, betrag):
+    def call(self, betrag):
         #hier muss der betrag dem Tisch zuaddiert werden
         #tisch.add_pot(betrag)
         #das Vermögen wird gesengt
@@ -16,7 +16,7 @@ class Spieler:
             self.vermoegen = self.vermoegen - betrag
             return self.vermoegen    
 
-    def Fold(self):
+    def fold(self):
         #hier muss der Spieler aus der Liste der Beteiligten gelöscht werden
         #Der Status wird auf raus gesetzt
         self.aktiv = False
@@ -46,7 +46,7 @@ class Spieler:
         self.kartenhand = karten
 
 
-    def AllIn(self, betrag):
+    def allIn(self, betrag):
         betrag = self.vermoegen
         self.vermoegen = 0
         return betrag

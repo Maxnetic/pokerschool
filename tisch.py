@@ -4,24 +4,24 @@ import os
 
 class Tisch:
     def __init__(self):                                     # Konstruktor für die Tischdaten
-        self.aktuelle_wette = 0                             # Aktuelle Wette (der höchste gesetzte Betrag), anfangs bei null
+        self.aktuelleWette = 0                             # Aktuelle Wette (der höchste gesetzte Betrag), anfangs bei null
         self.deck = []                                      # Der Kartenvorrat (Deck), anfangs eine leere Liste
         self.gemeinschaftskarten = []                       # Gemeinschaftskarten (Flop, Turn, River), anfangs eine leere Liste
         self.rundenanzahl = 1                               # Anzahl der Runden, die gespielt werden sollen, wird anfangs auf 1 gesetzt, da in einem Spiel mindestens eine Runde gespielt wird, kann aber später noch angepasst werden bei der Tischerstellung
         self.spielerListe = []                                   # Liste der Spieler, anfangs leer
         self.pot = 0                                        # Pot (Gesamtbetrag der Einsätze), anfangs bei null
-        self.raise_count = 0                                # Zähler für die Anzahl der Erhöhungen in der Runde, anfangs bei null
+        self.raiseCount = 0                                # Zähler für die Anzahl der Erhöhungen in der Runde, anfangs bei null
         #TODO: verschieben zu Validierung Raise() self.max_raises = 2                                 # Maximale Anzahl von Raises pro Runde, standardmäßig nach Pokerregeln bei 2
         self.rundenanzahl = int(input("Rundenanzahl: "))    # Eingabe der Anzahl der Runden
-        self.small_blind = int(input("Small Blind: "))      # Small Blind (Mindestwette)
-        self.big_blind = 2 * self.small_blind               # Big Blind (doppelt so hoch wie Small Blind)
+        self.smallBlind = int(input("Small Blind: "))      # Small Blind (Mindestwette)
+        self.bigBlind = 2 * self.smallBlind               # Big Blind (doppelt so hoch wie Small Blind)
 
     def spielererstellung(self):                                #erstellt eine bestimmte Anzahl an Spielern mit Namen und Startvermoegen
         for i in range(int(input('Spieleranzahl:'))):
             teilnehmer = Spieler(name = input('Name: '), vermoegen = int(input('Startvermögen: ')))
             self.spielerListe.append(teilnehmer)
 
-    def Deck_erstellen(self):
+    def deckErstellen(self):
         deck = []
         #erste Schleife teilt Farben zu, die zweite den Wert 
         for f in ["pik","herz","karo","kreuz"]:
@@ -29,23 +29,23 @@ class Tisch:
                 deck.append(Karte(f,w))
         return(deck)
   
-    def Deck_mischen(self, deck):
-        neues_deck = []
+    def deckMischen(self, deck):
+        neuesDeck = []
         for i in range(52):
             pos = random.randint(0, len(deck) - 1)
-            neues_deck.append(deck[pos])
+            neuesDeck.append(deck[pos])
             deck.pop(pos)
-        return neues_deck
+        return neuesDeck
 
-    def Flop_aufdecken(self):
+    def flopAufdecken(self):
         self.gemeinschaftskarten = [self.deck.pop() for _ in range(3)]          # Ziehe 3 Karten für den Flop
         print(f"Flop: {[str(karte) for karte in self.gemeinschaftskarten]}")    # Zeige die Flop-Karten
     
-    def Turn_aufdecken(self):
+    def turnAufdecken(self):
         self.gemeinschaftskarten.append(self.deck.pop())                        # Ziehe eine Karte für den Turn
         print(f"Turn: {[str(karte) for karte in self.gemeinschaftskarten]}")    # Zeige die Turn-Karte
 
-    def River_aufdecken(self):
+    def riverAufdecken(self):
         self.gemeinschaftskarten.append(self.deck.pop())                        # Ziehe eine Karte für den River
         print(f"River: {[str(karte) for karte in self.gemeinschaftskarten]}")   # Zeige die River-Karte
 
@@ -54,23 +54,23 @@ class Tisch:
         print("Hand: " + kartenhand)
         print("Vermögen: " + vermoegen)
 
-        raise_call_fold = ""
+        raiseCallFold = ""
         betrag = ""                           #input error handling
                                               #was ist raise call fold?
 
-        if raise_call_fold == "Raise":
+        if raiseCallFold == "Raise":
             betrag = input()                             
             spieler.Raise(betrag)                          #pot aktualisieren
-        elif raise_call_fold == "Call":
+        elif raiseCallFold == "Call":
             betrag = input()
             spieler.Call(betrag)
-        elif raise_call_fold == "Fold":
+        elif raiseCallFold == "Fold":
             spieler.Fold()        
         else:
-            raise_call_fold = input("Raise Call oder Fold?:")                    
+            raiseCallFold = input("Raise Call oder Fold?:")                    
                                              #spieler scheiden aus bei call
         os.system('cls' if os.name == 'nt' else 'clear')
         
-    def zeige_spielstaende(self):                                               #ausgeben von name und vermoegen aller spieler
+    def zeigeSpielstaende(self):                                               #ausgeben von name und vermoegen aller spieler
         for spieler in self.spielerListe:
             print(spieler.name + " " + spieler.vermoegen)   
