@@ -1,4 +1,5 @@
 from spieler import *
+from karte import *
 import random
 import os
 
