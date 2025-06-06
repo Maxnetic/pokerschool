@@ -20,7 +20,7 @@ class Tisch:
             teilnehmer = Spieler(name = input('Name: '), vermoegen = int(input('Startvermögen: ')))
             self.spielerListe.append(teilnehmer)
 
-       def deckErstellen(self):
+    def deckErstellen(self):
         deck = []
         #erste Schleife teilt Farben zu, die zweite den Wert 
         for farbe in ["pik","herz","karo","kreuz"]:
