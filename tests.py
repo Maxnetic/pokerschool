@@ -35,33 +35,33 @@ class TestTisch(unittest.TestCase):
 
     def testKartenausgeteilt(self): # Lucia
         for i in range len(spielerListe): #Es wird getestet, ob ein Spieler in der Liste eine leere Liste hat.
-            if (Spieler.kartenhand = 0):
+            if (Spieler.kartenhand == 0):
                 raise ValueError('Ein Spieler hat keine Karten')
 
     def testTischerstellt(self): # Moritz
         pass
 
     def testKartenattributeStimmen(self):       
-    for i in range (len(Tisch.deck)):         #testet für jede Karte im Stapel
-        if (Tisch.deck[i].farbe == '') or (Tisch.deck[i].farbe != 'pik' and Tisch.deck[i].farbe != 'karo' and Tisch.deck[i].farbe != 'kreuz' and Tisch.deck[i].farbe != 'herz'):
-            i = str(i)
-            raise ValueError("Die Kartenfarbe stimmt nicht an der Stelle: " + i)
-        intWert = int(Tisch.deck[i].wert)  #zum Testen ob der wert im bereich 2 - 14 liegt
-        if (Tisch.deck[i].wert == '') or (intWert < 2 or intWert > 14):
-            i = str(i)
-            raise ValueError("Der Kartenwert stimmt nicht an der Stelle: " + i)
+        for i in range (len(Tisch.deck)):         #testet für jede Karte im Stapel
+            if (Tisch.deck[i].farbe == '') or (Tisch.deck[i].farbe != 'pik' and Tisch.deck[i].farbe != 'karo' and Tisch.deck[i].farbe != 'kreuz' and Tisch.deck[i].farbe != 'herz'):
+                i = str(i)
+                raise ValueError("Die Kartenfarbe stimmt nicht an der Stelle: " + i)
+            intWert = int(Tisch.deck[i].wert)  #zum Testen ob der wert im bereich 2 - 14 liegt
+            if (Tisch.deck[i].wert == '') or (intWert < 2 or intWert > 14):
+                i = str(i)
+                raise ValueError("Der Kartenwert stimmt nicht an der Stelle: " + i)
 
 
     def testKartenWerdenAufgedeckt(self, wofuer):  
-    if wofuer = "flop":
-        if (len(Tisch.gemeinschaftskarten) != 3):
-            raise ValueError("Es werden zu viele oder zu wenige Karten für den Flop aufgedeckt")
-    if wofuer = "turn":
-        if (len(Tisch.gemeinschaftskarten) != 4):
-            raise ValueError("Es werden zu viele oder zu wenige Karten für den Turn aufgedeckt")
-    if wofuer = "river":
-        if (len(Tisch.gemeinschaftskarten) != 5):
-            raise ValueError("Es werden zu viele oder zu wenige Karten für den River aufgedeckt")
+        if wofuer == "flop":
+            if (len(Tisch.gemeinschaftskarten) != 3):
+                raise ValueError("Es werden zu viele oder zu wenige Karten für den Flop aufgedeckt")
+        if wofuer == "turn":
+            if (len(Tisch.gemeinschaftskarten) != 4):
+                raise ValueError("Es werden zu viele oder zu wenige Karten für den Turn aufgedeckt")
+        if wofuer == "river":
+            if (len(Tisch.gemeinschaftskarten) != 5):
+                raise ValueError("Es werden zu viele oder zu wenige Karten für den River aufgedeckt")
 
     def testWettrundeFunktioniert(self):
         pass
