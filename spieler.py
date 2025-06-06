@@ -30,7 +30,7 @@ class Spieler:
         if (self.vermoegen < betrag ):
             raise ValueError ('Der geforderte Einsatz ist groeßer als dein Vermögen.')
         else:
-            self.vermoegen = vermoegen - betrag
+            self.vermoegen = self.vermoegen - betrag
             print('Der Einsatz wurde erhöht und beträgt nun:')
             print(self.betrag)
             return betrag
@@ -39,7 +39,7 @@ class Spieler:
         print('Hand: ' + self.kartenhand)
 
     # Kartenhand als Liste. Default leere Liste
-    def setHand(karten = []):
+    def setHand(self, karten = []):
         #validieren,sodass es sich um wirklich zwei Karten handelt.
         if(len(karten) != 2):
             print("Fehler")
