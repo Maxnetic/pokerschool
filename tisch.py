@@ -8,6 +8,7 @@ class Tisch:
         self.aktuelleWette = 0                             # der höchste gesetzte Betrag
         self.gemeinschaftskarten = []                       # Gemeinschaftskarten sind die Karten für Flop, Turn, River
         self.spielerListe = []                              # Mitspielende Spieler
+        self.deck =[]
         self.pot = 0                                        # Gesamtbetrag der Einsätze
         self.raiseCount = 0                                # Zähler für die Anzahl der Erhöhungen in der Runde
         #TODO: verschieben zu Validierung Raise() self.max_raises = 2                             
@@ -18,39 +19,47 @@ class Tisch:
 
     def spielererstellung(self):                                #erstellt eine bestimmte Anzahl an Spielern mit Namen und Startvermoegen
         for i in range(int(input('Spieleranzahl:'))):
-            teilnehmer = Spieler(name = input('Name: '), vermoegen = int(input('Startvermögen: ')))
+            teilnehmer = Spieler(name = input('Name: '), vermoegen = int(input('Startvermögen: ')), platz = self)
             self.spielerListe.append(teilnehmer)
 
+    def add_aktuelleWette(self, betrag):
+        self.aktuelleWette = self.aktuelleWette + betrag
+
+    def add_pot(self, betrag):
+        self.pot = self.pot + betrag
+
     def deckErstellen(self):
-        deck = []
         #erste Schleife teilt Farben zu, die zweite den Wert 
         for farbe in ["pik","herz","karo","kreuz"]:
             for wert in [2,3,4,5,6,7,8,9,10,11,12,13,14]:
-                deck.append(Karte(farbe, wert))
-        return(deck)
+                self.deck.append(Karte(farbe, wert))
     
     def deckAusgeben(self, deck):
         for Karte in deck:
             print(Karte.printWert())
   
-    def deckMischen(self, deck): # Deck wird in neuesDeck umbenannt
+    def deckMischen(self): # Deck wird gemischt
         neuesDeck = []
         for i in range(52):
-            pos = random.randint(0, len(deck) - 1)
-            neuesDeck.append(deck[pos])
-            deck.pop(pos)
-        return neuesDeck
+            pos = random.randint(0, len(self.deck) - 1)
+            neuesDeck.append(self.deck[pos])
+            self.deck.pop(pos)
+        self.deck = neuesDeck
 
-    def flopAufdecken(self, neuesDeck):
-        self.gemeinschaftskarten = [neuesDeck.pop() for _ in range(3)]          # Ziehe 3 Karten für den Flop
+    def handkartenAusteilen(self):
+        for spielernummer in range(len(self.spielerListe)):
+            self.spielerListe[spielernummer-1].kartenhand.append(self.deck.pop() for _ in range(2))
+
+    def flopAufdecken(self,):
+        self.gemeinschaftskarten = [self.deck.pop() for _ in range(3)]          # Ziehe 3 Karten für den Flop
         print(f"Flop: {[str(karte) for karte in self.gemeinschaftskarten]}")    # Zeige die Flop-Karten
     
-    def turnAufdecken(self, neuesDeck):
-        self.gemeinschaftskarten.append(neuesDeck.pop())                        # Ziehe eine Karte für den Turn
+    def turnAufdecken(self):
+        self.gemeinschaftskarten.append(self.deck.pop())                        # Ziehe eine Karte für den Turn
         print(f"Turn: {[str(karte) for karte in self.gemeinschaftskarten]}")    # Zeige die Turn-Karte
 
-    def riverAufdecken(self, neuesDeck):
-        self.gemeinschaftskarten.append(neuesDeck.pop())                        # Ziehe eine Karte für den River
+    def riverAufdecken(self):
+        self.gemeinschaftskarten.append(self.deck.pop())                        # Ziehe eine Karte für den River
         print(f"River: {[str(karte) for karte in self.gemeinschaftskarten]}")   # Zeige die River-Karte
 
     def konsole(self, spieler, community_cards, vermoegen, kartenhand):                  #spieler ui während einer runde

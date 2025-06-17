@@ -1,20 +1,22 @@
+from tisch import *
+
 class Spieler:
-    def __init__(self, vermoegen, name, aktiv = True, kartenhand = 0):
+    def __init__(self, vermoegen, name, platz, aktiv = True, kartenhand = 0):
         #der Spieler wird erstellt
         self.name = name
         self.kartenhand = kartenhand # Liste mit zwei Karten
         self.aktiv = aktiv
         self.vermoegen = vermoegen
+        self.tisch = platz
 
     def call(self, betrag):
         #hier muss der betrag dem Tisch zuaddiert werden
         #tisch.add_pot(betrag)
         #das Vermögen wird gesengt
         if(self.vermoegen < betrag):
-            raise ValueError ('Der geforderte Einsatz ist groeßer als dein Vermögen.')
+            self.fold
         else:
-            self.vermoegen = self.vermoegen - betrag
-            return self.vermoegen    
+            self.vermoegen = self.vermoegen - betrag   
 
     def fold(self):
         #hier muss der Spieler aus der Liste der Beteiligten gelöscht werden
@@ -26,14 +28,14 @@ class Spieler:
         #hier muss der Betrag dem Tisch zugeordnet werden
         #tisch.add_pot(betrag)
         #der Betrag wird dem vermögen abgezogen
-        #TODO: verschieben zu Validierung Raise()  self.max_raises = 2       # Maximale Anzahl von Raises pro Runde, standardmäßig nach Pokerregeln bei 2
         if (self.vermoegen < betrag ):
-            raise ValueError ('Der geforderte Einsatz ist groeßer als dein Vermögen.')
-        else:
-            self.vermoegen = self.vermoegen - betrag
-            print('Der Einsatz wurde erhöht und beträgt nun:')
-            print(self.betrag)
-            return betrag
+            self.fold()
+        
+        self.platz.add_pot(betrag)
+        self.platz.add_aktuelleWette(betrag)
+        self.vermoegen = self.vermoegen - betrag     #TODO: Betrag dem pot hinzufügen
+        print('Der Einsatz wurde erhöht und beträgt nun:')
+        print(self.betrag)
 
     def getHand(self): #Gibt die aktuelle Hand aus
         print('Hand: ' + self.kartenhand)
