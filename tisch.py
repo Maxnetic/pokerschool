@@ -53,7 +53,7 @@ class Tisch:
         self.gemeinschaftskarten.append(neuesDeck.pop())                        # Ziehe eine Karte für den River
         print(f"River: {[str(karte) for karte in self.gemeinschaftskarten]}")   # Zeige die River-Karte
 
-    def konsole(self, spieler, community_cards, vermoegen, kartenhand):                  #spieler ui während einer runde
+    def konsole(self, spieler, community_cards, vermoegen, kartenhand):         #spieler ui während einer runde
         print("aufgedeckte Karten: " + community_cards)                         #ausgeben der zum zeitpunkt wichtigen daten
         print("Hand: " + kartenhand)
         print("Vermögen: " + vermoegen)
