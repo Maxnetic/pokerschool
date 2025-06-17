@@ -11,7 +11,8 @@ class Spieler:
         #tisch.add_pot(betrag)
         #das Vermögen wird gesengt
         if(self.vermoegen < betrag):
-            raise ValueError ('Der geforderte Einsatz ist groeßer als dein Vermögen.')
+           print('Der geforderte Einsatz ist groeßer als dein Vermögen.')
+           input('Was möchtest du tun')
         else:
             self.vermoegen = self.vermoegen - betrag
             return self.vermoegen    
@@ -28,7 +29,8 @@ class Spieler:
         #der Betrag wird dem vermögen abgezogen
         #TODO: verschieben zu Validierung Raise()  self.max_raises = 2       # Maximale Anzahl von Raises pro Runde, standardmäßig nach Pokerregeln bei 2
         if (self.vermoegen < betrag ):
-            raise ValueError ('Der geforderte Einsatz ist groeßer als dein Vermögen.')
+            print('Der geforderte Einsatz ist groeßer als dein Vermögen.')
+            input('Was möchtest du tun?')
         else:
             self.vermoegen = self.vermoegen - betrag
             print('Der Einsatz wurde erhöht und beträgt nun:')

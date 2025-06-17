@@ -13,14 +13,15 @@ class Tisch:
         #TODO: verschieben zu Validierung Raise() self.max_raises = 2                             
         self.rundenanzahl = int(input("Rundenanzahl: "))    # Eingabe der Anzahl der Runden
         self.smallBlind = int(input("Small Blind: "))      # Small Blind (Mindestwette)
-        self.bigBlind = int(input("Small Blind: "))        
+        self.bigBlind = int(input("Small Blind: "))  
+        self.neuesDeck = []      
         #self.blindincreaseafterrounds...
 
-    def spielererstellung(self):                                #erstellt eine bestimmte Anzahl an Spielern mit Namen und Startvermoegen
+    def spielerErstellen(self):
         for i in range(int(input('Spieleranzahl:'))):
             teilnehmer = Spieler(name = input('Name: '), vermoegen = int(input('Startvermögen: ')))
             self.spielerListe.append(teilnehmer)
-
+        return self.spielerListe
     def deckErstellen(self):
         deck = []
         #erste Schleife teilt Farben zu, die zweite den Wert 
@@ -34,23 +35,28 @@ class Tisch:
             print(Karte.printWert())
   
     def deckMischen(self, deck): # Deck wird in neuesDeck umbenannt
-        neuesDeck = []
         for i in range(52):
             pos = random.randint(0, len(deck) - 1)
-            neuesDeck.append(deck[pos])
+            self.neuesDeck.append(deck[pos])
             deck.pop(pos)
-        return neuesDeck
+        return self.neuesDeck
+    
+    def kartenAusteilen(self):
+        for i in self.spielerListe:
+            Spieler.kartenhand = self.neuesDeck[0]
+            self.neuesDeck.pop[0]
 
-    def flopAufdecken(self, neuesDeck):
-        self.gemeinschaftskarten = [neuesDeck.pop() for _ in range(3)]          # Ziehe 3 Karten für den Flop
+
+    def flopAufdecken(self):
+        self.gemeinschaftskarten = [self.neuesDeck.pop() for _ in range(3)]          # Ziehe 3 Karten für den Flop
         print(f"Flop: {[str(karte) for karte in self.gemeinschaftskarten]}")    # Zeige die Flop-Karten
     
-    def turnAufdecken(self, neuesDeck):
-        self.gemeinschaftskarten.append(neuesDeck.pop())                        # Ziehe eine Karte für den Turn
+    def turnAufdecken(self):
+        self.gemeinschaftskarten.append(self.neuesDeck.pop())                        # Ziehe eine Karte für den Turn
         print(f"Turn: {[str(karte) for karte in self.gemeinschaftskarten]}")    # Zeige die Turn-Karte
 
-    def riverAufdecken(self, neuesDeck):
-        self.gemeinschaftskarten.append(neuesDeck.pop())                        # Ziehe eine Karte für den River
+    def riverAufdecken(self):
+        self.gemeinschaftskarten.append(self.neuesDeck.pop())                        # Ziehe eine Karte für den River
         print(f"River: {[str(karte) for karte in self.gemeinschaftskarten]}")   # Zeige die River-Karte
 
     def konsole(self, spieler, community_cards, vermoegen, kartenhand):                  #spieler ui während einer runde
