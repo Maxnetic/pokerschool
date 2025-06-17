@@ -14,6 +14,7 @@ class Tisch:
         self.rundenanzahl = int(input("Rundenanzahl: "))    # Eingabe der Anzahl der Runden
         self.smallBlind = int(input("Small Blind: "))      # Small Blind (Mindestwette)
         self.bigBlind = int(input("Small Blind: "))        
+        #self.blindincreaseafterrounds...
 
     def spielererstellung(self):                                #erstellt eine bestimmte Anzahl an Spielern mit Namen und Startvermoegen
         for i in range(int(input('Spieleranzahl:'))):
@@ -27,6 +28,7 @@ class Tisch:
             for wert in [2,3,4,5,6,7,8,9,10,11,12,13,14]:
                 deck.append(Karte(farbe, wert))
         return(deck)
+    
     def deckAusgeben(self, deck):
         for Karte in deck:
             print(Karte.printWert())
