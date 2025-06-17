@@ -26,7 +26,30 @@ class TestTisch(unittest.TestCase):
         pass
 
     def testGemeinschaftskarten(self): # Dominic
-        pass
+        tisch = Tisch()
+        deck = tisch.deckErstellen()
+        gemischtesDeck = tisch.deckMischen(deck)
+        ursprungslaenge = len(gemischtesDeck)
+    
+        # Flop
+        tisch.flopAufdecken(gemischtesDeck)
+        self.assertEqual(len(tisch.gemeinschaftskarten), 3, "Flop sollte 3 Karten aufdecken.")
+        self.assertEqual(len(gemischtesDeck), ursprungslaenge - 3, "Deck sollte um 3 Karten reduziert werden.")
+
+        # Turn
+        tisch.turnAufdecken(gemischtesDeck)
+        self.assertEqual(len(tisch.gemeinschaftskarten), 4, "Turn sollte eine Karte hinzufügen.")
+        self.assertEqual(len(gemischtesDeck), ursprungslaenge - 4, "Deck sollte um 4 Karten reduziert sein.")
+
+        # River
+        tisch.riverAufdecken(gemischtesDeck)
+        self.assertEqual(len(tisch.gemeinschaftskarten), 5, "River sollte eine Karte hinzufügen.")
+        self.assertEqual(len(gemischtesDeck), ursprungslaenge - 5, "Deck sollte um 5 Karten reduziert sein.")
+
+        ''' Überprüfen, ob alle Gemeinschaftskarten eindeutig sind (optional)
+        karten_str = [str(karte) for karte in tisch.gemeinschaftskarten]
+        self.assertEqual(len(karten_str), len(set(karten_str)), "Gemeinschaftskarten enthalten Duplikate.")'''
+
 
     def testSpielerErstellt(self):    # Mikka
         a = Tisch()
