@@ -20,6 +20,7 @@ class Tisch:
         for i in range(int(input('Spieleranzahl:'))):
             teilnehmer = Spieler(name = input('Name: '), vermoegen = int(input('Startvermögen: ')))
             self.spielerListe.append(teilnehmer)
+            return (self.spielerListe)
 
     def deckErstellen(self):
         deck = []
@@ -33,13 +34,13 @@ class Tisch:
         for Karte in deck:
             print(Karte.printWert())
   
-    def deckMischen(self, deck): # Deck wird in neuesDeck umbenannt
+    def deckMischen(self, self.deck): # Deck wird in neuesDeck umbenannt
         neuesDeck = []
         for i in range(52):
             pos = random.randint(0, len(deck) - 1)
             neuesDeck.append(deck[pos])
             deck.pop(pos)
-        return neuesDeck
+        return (neuesDeck)
 
     def flopAufdecken(self, neuesDeck):
         self.gemeinschaftskarten = [neuesDeck.pop() for _ in range(3)]          # Ziehe 3 Karten für den Flop
