@@ -9,8 +9,7 @@ class Tisch:
         self.gemeinschaftskarten = []                       # Gemeinschaftskarten sind die Karten für Flop, Turn, River
         self.spielerListe = []                              # Mitspielende Spieler
         self.pot = 0                                        # Gesamtbetrag der Einsätze
-        self.raiseCount = 0                                # Zähler für die Anzahl der Erhöhungen in der Runde
-        #TODO: verschieben zu Validierung Raise() self.max_raises = 2                             
+        self.raiseCount = 0                                # Zähler für die Anzahl der Erhöhungen in der Runde                         
         self.rundenanzahl = int(input("Rundenanzahl: "))    # Eingabe der Anzahl der Runden
         self.smallBlind = int(input("Small Blind: "))      # Small Blind (Mindestwette)
         self.bigBlind = int(input("Small Blind: "))        
@@ -40,6 +39,38 @@ class Tisch:
             neuesDeck.append(deck[pos])
             deck.pop(pos)
         return neuesDeck
+    
+    def kartenAusteilen(spielerListe,deck):
+        deckIndex = 0
+        for spieler in spielerListe:
+            spieler.setHand([deck[deckIndex],deck[deckIndex + 1]])
+            deckIndex = deckIndex + 2
+
+    def aktionVerarbeiten(input,spieler):
+        
+        match input:
+            case "r":
+                    betrag = spieler.Raise()
+                    if(betrag > aktuelleWette):
+                        aktuelleWette = betrag
+                    setPot(betrag)
+
+            case "c":
+                    spieler.Call()
+
+            case "f":
+                    print("You can become a backend developer")
+
+            case "allIn":
+                    print("You can become a Blockchain developer")
+            case _:
+                    print("Eingabe ist falsch")
+
+
+
+
+
+
 
     def flopAufdecken(self, neuesDeck):
         self.gemeinschaftskarten = [neuesDeck.pop() for _ in range(3)]          # Ziehe 3 Karten für den Flop
@@ -78,3 +109,9 @@ class Tisch:
     def zeigeSpielstaende(self):                                               #ausgeben von name und vermoegen aller spieler
         for spieler in self.spielerListe:
             print(spieler.name + " " + spieler.vermoegen)   
+
+    def setPot(self,betrag):
+         pot = self.pot + betrag
+    def getPot(self):
+        return self.pot
+

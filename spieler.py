@@ -6,6 +6,7 @@ class Spieler:
         self.aktiv = aktiv
         self.vermoegen = vermoegen
 
+
     def call(self, betrag):
         #hier muss der betrag dem Tisch zuaddiert werden
         #tisch.add_pot(betrag)
@@ -33,7 +34,10 @@ class Spieler:
             self.vermoegen = self.vermoegen - betrag
             print('Der Einsatz wurde erhöht und beträgt nun:')
             print(self.betrag)
-            return betrag
+        
+        return betrag
+
+            
 
     def getHand(self): #Gibt die aktuelle Hand aus
         print('Hand: ' + self.kartenhand)
@@ -45,11 +49,20 @@ class Spieler:
             print("Fehler")
         self.kartenhand = karten
 
+    def getName(self):
+        return self.name
+    
+    def getVemoegen(self):
+        return self.vermoegen
+
 
     def allIn(self, betrag):
         betrag = self.vermoegen
         self.vermoegen = 0
         return betrag
+
+
+
 
     
 
