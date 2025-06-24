@@ -57,7 +57,7 @@ class TestTisch(unittest.TestCase):
         self.assertEqual(len(a.spielerListe), int(input('vorher eingegebene Spieleranzahl:')))
 
     def testKartenausgeteilt(self): # Lucia
-        for i in range len(spielerListe): #Es wird getestet, ob ein Spieler in der Liste eine leere Liste hat.
+        for i in range (len(spielerListe)): #Es wird getestet, ob ein Spieler in der Liste eine leere Liste hat.
             if (Spieler.kartenhand == 0):
                 raise ValueError('Ein Spieler hat keine Karten')
 

@@ -19,7 +19,7 @@ tisch.kartenAusteilen(spielerListe,gemischtesdeck)
 
 
 
-
+legeSmallUndBigBlindFest()
 
 
 
@@ -33,35 +33,37 @@ tisch.kartenAusteilen(spielerListe,gemischtesdeck)
 # f -> pop karten, variable auf inaktiv
 # allin -> an maximalem Geld der Spieler prüfen, splitpot für später
 # konsole löschen
-konsoleLoeschen()
 # bereitschaft usw.
-spielerIndex = 0
-
-for i in range(tisch.getSpielerAnzahl):
+# spieler nicht fertig
+while(tisch.alleFertig(spielerListe) == False):
+      
+        spielerIndex = 0
+        for i in range(tisch.getSpielerAnzahl):
     
-      print(spielerListe[spielerIndex].name)
-      input("Sind Sie bereit?")
-      print(spielerListe[0].getHand + tisch.zeigeSpielstaende() + " In der Mitte liegen " + tisch.getPot())
-      input = input("möchten sie raisen (r), callen (c), folden (f) oder All in gehen (allin)")
-      tisch.aktionVerarbeiten(input)
+            print(spielerListe[spielerIndex].name)
+            input("Sind Sie bereit?")
+            print(spielerListe[0].getHand + tisch.zeigeSpielstaende() + " In der Mitte liegen " + tisch.getPot())
+            input = input("möchten sie raisen (r), callen (c), folden (f) oder All in gehen (allin)")
+            tisch.aktionVerarbeiten(input)
 
+            spielerIndex = spielerIndex + 1
 
-        
-    
-      spielerIndex = spielerIndex + 1
 
       
 
 # flop, turn, river
 tisch.flopaufdecken(deck)
+# auslagern in Methode
 
 
 
 # wettrunde - # Raise call fold funktion bauen
 tisch.turnAufdecken(deck)
+
 # wettrunde - # Raise call fold funktion bauen
 tisch.riverAufdecken(deck)
-# wettrunde - # Raise call fold funktion bauen
+
+
 
 # gewinnermittlung Funktion schreiben zur Handbewertung
 
@@ -78,3 +80,8 @@ tisch.riverAufdecken(deck)
 # nach X Runden -> Blinds erhöhen
 # nach Y Runden -> Endstatistik ausgeben
 
+
+
+def legeSmallUndBigBlindFest(spielerListe):
+      # erstmal vereinfachen
+      

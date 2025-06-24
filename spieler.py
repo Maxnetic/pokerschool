@@ -1,27 +1,35 @@
 class Spieler:
-    def __init__(self, vermoegen, name, aktiv = True, kartenhand = 0):
+    def __init__(self, vermoegen, name, aktiv = True, kartenhand = 0,fertig = False):
         #der Spieler wird erstellt
         self.name = name
         self.kartenhand = kartenhand # Liste mit zwei Karten
         self.aktiv = aktiv
         self.vermoegen = vermoegen
+        self.aktuellerEinsatz = 0
+        self.fertig = fertig
+        
 
 
-    def call(self, betrag):
         #hier muss der betrag dem Tisch zuaddiert werden
         #tisch.add_pot(betrag)
         #das Vermögen wird gesengt
+    def call(self, betrag):
+        
         if(self.vermoegen < betrag):
             raise ValueError ('Der geforderte Einsatz ist groeßer als dein Vermögen.')
         else:
-            self.vermoegen = self.vermoegen - betrag
-            return self.vermoegen    
+             self.vermoegen = self.vermoegen - betrag
+        
+        return betrag
+
+
+          
 
     def fold(self):
         #hier muss der Spieler aus der Liste der Beteiligten gelöscht werden
         #Der Status wird auf raus gesetzt
         self.aktiv = False
-        return self.aktiv
+ 
 
     def Raise(self, betrag):
         #hier muss der Betrag dem Tisch zugeordnet werden
@@ -34,9 +42,18 @@ class Spieler:
             self.vermoegen = self.vermoegen - betrag
             print('Der Einsatz wurde erhöht und beträgt nun:')
             print(self.betrag)
+            # alle anderen fertig auf false setzten in Tisch
         
         return betrag
-
+    
+    
+    
+    def allIn(self):
+        betrag = self.vermoegen
+        self.vermoegen = 0
+        self.fertig = True
+        return betrag
+        
             
 
     def getHand(self): #Gibt die aktuelle Hand aus
@@ -60,6 +77,14 @@ class Spieler:
         betrag = self.vermoegen
         self.vermoegen = 0
         return betrag
+    
+
+    def spielerFertig(self,fertig):
+        self.fertig = fertig
+
+
+    def getSpielerFertig(self):
+        return self.fertig
 
 
 

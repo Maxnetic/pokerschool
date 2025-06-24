@@ -53,22 +53,41 @@ class Tisch:
                     betrag = spieler.Raise()
                     if(betrag > aktuelleWette):
                         aktuelleWette = betrag
-                    setPot(betrag)
+                        setPot(betrag)
+                        for spieler in spielerListe:
+                            spieler.setFertig(False)
+                    
+                         
+                    else:
+                         print("Fehler")
+                    return "r"
 
             case "c":
                     spieler.Call()
-
+                    setPot(self.aktuelleWette)
+                    spieler.setFertig(True)
+                    return "c"
             case "f":
-                    print("You can become a backend developer")
+                    spieler.fold()
+                    return "f"
 
             case "allIn":
-                    print("You can become a Blockchain developer")
+                    betrag = spieler.allIn()
+                    setPot(betrag)
+                    return "allIn"
+                    spieler.setFertig(True)
+
             case _:
                     print("Eingabe ist falsch")
 
 
 
-
+    def alleFertig(spielerListe):
+         fertig = False
+         for spieler in spielerListe:
+              fertig = spieler.getFertig()
+         return fertig
+         
 
 
 
