@@ -1,15 +1,16 @@
+from tisch import *
+
 class Spieler:
-    def __init__(self, vermoegen, name, aktiv = True, kartenhand = 0,fertig = False):
+    def __init__(self, vermoegen, name, aktiv = True, kartenhand = 0, fertig = False, tisch = None):
         #der Spieler wird erstellt
         self.name = name
         self.kartenhand = kartenhand # Liste mit zwei Karten
         self.aktiv = aktiv
         self.vermoegen = vermoegen
         self.aktuellerEinsatz = 0
-        self.fertig = fertig
+        self.letzteAktion = None
+        self.tisch = tisch
         
-
-
         #hier muss der betrag dem Tisch zuaddiert werden
         #tisch.add_pot(betrag)
         #das Vermögen wird gesengt
@@ -31,17 +32,19 @@ class Spieler:
         self.aktiv = False
  
 
-    def Raise(self, betrag):
-        #hier muss der Betrag dem Tisch zugeordnet werden
-        #tisch.add_pot(betrag)
-        #der Betrag wird dem vermögen abgezogen
-        #TODO: verschieben zu Validierung Raise()  self.max_raises = 2       # Maximale Anzahl von Raises pro Runde, standardmäßig nach Pokerregeln bei 2
+    def Raise(self):
+        betrag = int(input("Um wie viel wollen Sie die aktuelle Wette erhöhen?"))
         if (self.vermoegen < betrag ):
-            raise ValueError ('Der geforderte Einsatz ist groeßer als dein Vermögen.')
+            print('Der geforderte Einsatz ist groeßer als dein Vermögen.')
+            self.Raise()
+        #elif ():
+            # TODO theoretisch nur Raise bis Vermögen von ärmstem Spieler
         else:
             self.vermoegen = self.vermoegen - betrag
+            self.aktuellerEinsatz = self.aktuellerEinsatz + betrag
+            self.tisch.aktuelleWette = self.aktuellerEinsatz
             print('Der Einsatz wurde erhöht und beträgt nun:')
-            print(self.betrag)
+            print(self.aktuellerEinsatz)
             # alle anderen fertig auf false setzten in Tisch
         
         return betrag
@@ -69,22 +72,26 @@ class Spieler:
     def getName(self):
         return self.name
     
-    def getVemoegen(self):
+    def getVermoegen(self):
         return self.vermoegen
-
 
     def allIn(self, betrag):
         betrag = self.vermoegen
         self.vermoegen = 0
         return betrag
-    
 
-    def spielerFertig(self,fertig):
-        self.fertig = fertig
+    def getInfo(self):
+        print("aufgedeckte Karten: " + self.tisch.getGemeinschaftskarten())                         #ausgeben der zum zeitpunkt wichtigen daten
+        print("Hand: " + self.getHand())
+        print("Vermögen: " + self.getVermoegen)
+        #Geld im Pot
+        #Aktuelle Wette
+        #Eigene Wette
+        #Namen der anderen Spieler und deren Vermögen?
+        #Blinds
+        #Rundenanzahl
+        #Status der anderen Spieler/letzte Aktion der anderen Spieler
 
-
-    def getSpielerFertig(self):
-        return self.fertig
 
 
 

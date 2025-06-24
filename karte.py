@@ -3,7 +3,6 @@ class Karte:
         self.farbe = farbe
         self.wert = wert       
     
-
     def getFarbe(self):
         return self.farbe
     

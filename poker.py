@@ -1,32 +1,20 @@
-import spieler,tisch,karte
+from spieler import *
+from tisch import * 
+from karte import *
 import os
 
 #tisch erstellen
-tisch = Tisch(...)
-#spieler erstellen
+tisch = Tisch()
 
-tisch.Spielererstellung(...)
+#spieler erstellen
+tisch.spielererstellung()
 
 #karten erstellen und mischen
 deck = tisch.deckErstellen()
-gemischtesdeck = tisch.deckMischen(deck)
-
-#liste von spielerobjekten, die in der position wechseln
-spielerListe = tisch.spielerListe
+deck = tisch.deckMischen(deck)
 
 #karten an spieler austeilen funktionerstellen
-tisch.kartenAusteilen(spielerListe,gemischtesdeck)
-
-
-
-legeSmallUndBigBlindFest()
-
-
-
-
-#print aktuellen spielstatus: hand, eigenes geld, pot, aufgedeckte karten, verbliebene spieler usw.
-
-#input aktion
+tisch.kartenAusteilen(tisch.spielerListe, deck)
 
 # r -> wie viel?, auch bei anderen spielern da?
 # c -> money da?
@@ -35,21 +23,14 @@ legeSmallUndBigBlindFest()
 # konsole löschen
 # bereitschaft usw.
 # spieler nicht fertig
-while(tisch.alleFertig(spielerListe) == False):
-      
-        spielerIndex = 0
-        for i in range(tisch.getSpielerAnzahl):
-    
-            print(spielerListe[spielerIndex].name)
-            input("Sind Sie bereit?")
-            print(spielerListe[0].getHand + tisch.zeigeSpielstaende() + " In der Mitte liegen " + tisch.getPot())
-            input = input("möchten sie raisen (r), callen (c), folden (f) oder All in gehen (allin)")
-            tisch.aktionVerarbeiten(input)
 
-            spielerIndex = spielerIndex + 1
-
-
-      
+for i in tisch.rundenanzahl:
+    print("Runde " + str(i))
+    for spieler in tisch.spielerListe:
+        input(str(spieler.getName()) + " sind Sie bereit? Drücken Sie Enter")
+        spieler.getInfo() #Infos vom Tisch und vom aktuellen Spieler anzeigen
+        aktion = input("Möchten sie raisen (r), callen (c), folden (f) oder All in gehen (allin)")
+        tisch.aktionVerarbeiten(aktion, spieler)
 
 # flop, turn, river
 tisch.flopaufdecken(deck)
